@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class SimpleGradeTracker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int numberOfStudents = 3;
+        String[] names = new String[numberOfStudents];
+        int[] grades = new int[numberOfStudents];
+
+        for (int i = 0; i < numberOfStudents; i++) {
+            System.out.print("Enter name of student " + (i + 1) + ": ");
+            names[i] = sc.nextLine();
+
+            System.out.print("Enter grade of " + names[i] + ": ");
+            grades[i] = sc.nextInt();
+            sc.nextLine();
+        }
+
+        int sum = 0, highest = grades[0], lowest = grades[0];
+
+        for (int i = 0; i < numberOfStudents; i++) {
+            sum += grades[i];
+            if (grades[i] > highest)
+                highest = grades[i];
+            if (grades[i] < lowest)
+                lowest = grades[i];
+        }
+
+        double average = (double) sum / numberOfStudents;
+
+        System.out.println("\n--- Summary Report ---");
+        for (int i = 0; i < numberOfStudents; i++) {
+            System.out.println("Name: " + names[i] + ", Grade: " + grades[i]);
+        }
+
+        System.out.println("Average Grade: " + average);
+        System.out.println("Highest Grade: " + highest);
+        System.out.println("Lowest Grade: " + lowest);
+    }
+}
